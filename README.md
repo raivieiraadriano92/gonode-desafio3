@@ -1,4 +1,4 @@
-# GoNode - Desafio 3 - API REST
+# GoNode - Challenge 3 - API REST
 
 Second challenge of the third module of the GoNode course
 
