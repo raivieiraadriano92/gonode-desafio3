@@ -5,7 +5,8 @@ Second challenge of the third module of the GoNode course
 ### Used Technologies
 - NodeJS <https://nodejs.org/>
 - ExpressJS - <http://expressjs.com>
-- MySQL - <https://www.mysql.com/>
+- MongoDB - <https://www.mongodb.com/>
+- MongooseJS - <https://www.mongoosejs.com/>
 - Docker <https://www.docker.com/>
 
 ### Getting Started
