@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
 
-const Tweet = mongoose.model('Tweet');
+const Posting = mongoose.model('Posting');
 
 module.exports = {
   async toggle(req, res, next) {
     try {
-      const tweet = await Tweet.findById(req.params.id);
+      const posting = await Posting.findById(req.params.id);
 
-      if (!tweet) {
-        return res.status(400).json({ error: 'Tweet doesn\'t exist' });
+      if (!posting) {
+        return res.status(400).json({ error: 'Posting doesn\'t exist' });
       }
 
-      const liked = tweet.likes.indexOf(req.userId);
+      const liked = posting.likes.indexOf(req.userId);
 
       if (liked === -1) {
-        tweet.likes.push(req.userId);
+        posting.likes.push(req.userId);
       } else {
-        tweet.likes.splice(liked, 1);
+        posting.likes.splice(liked, 1);
       }
 
-      await tweet.save();
+      await posting.save();
 
-      return res.json(tweet);
+      return res.json(posting);
     } catch (err) {
       return next(err);
     }

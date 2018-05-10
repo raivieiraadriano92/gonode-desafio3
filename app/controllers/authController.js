@@ -39,7 +39,7 @@ module.exports = {
       sendMail({
         from: 'Raí Vieira Adriano <raivieiraadriano92@gmail.com>',
         to: user.email,
-        subject: 'Bem-vindo ao RocketTwitter',
+        subject: 'Bem-vindo ao RocketFace',
         template: 'auth/register',
         context: {
           name: user.name,

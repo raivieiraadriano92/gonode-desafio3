@@ -1,19 +1,15 @@
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
-const Tweet = mongoose.model('Tweet');
+const Posting = mongoose.model('Posting');
 
 module.exports = {
   async me(req, res, next) {
     try {
       const user = await User.findById(req.userId);
-      const tweetCount = await Tweet.find({ user: user.id }).count();
 
       return res.json({
         user,
-        tweetCount,
-        followersCount: user.followers.length,
-        followingCount: user.following.length,
       });
     } catch (err) {
       return next(err);
@@ -24,16 +20,16 @@ module.exports = {
   async feed(req, res, next) {
     try {
       const user = await User.findById(req.userId);
-      const { following } = user;
+      const { friends } = user;
 
-      const tweets = await Tweet
+      const posts = await Posting
         .find({
-          user: { $in: [user.id, ...following] },
+          user: { $in: [user.id, ...friends] },
         })
         .limit(50)
         .sort('-createdAt');
 
-      return res.json(tweets);
+      return res.json([posts]);
     } catch (err) {
       return next(err);
     }
@@ -58,8 +54,8 @@ module.exports = {
         name,
         username,
       }, {
-          new: true,
-        });
+        new: true,
+      });
 
       if (password) {
         user.password = password;

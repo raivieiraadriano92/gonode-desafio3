@@ -28,14 +28,19 @@ routes.get('/feed', controllers.userController.feed);
 /**
  * Follows
  */
-routes.post('/follow/:id', controllers.followController.create);
-routes.delete('/unfollow/:id', controllers.followController.destroy);
+// routes.post('/follow/:id', controllers.followController.create);
+// routes.delete('/unfollow/:id', controllers.followController.destroy);
 
 /**
  * posts
  */
 routes.post('/posts', controllers.postingController.create);
 routes.delete('/posts/:id', controllers.postingController.destroy);
+
+/**
+ * comments
+ */
+routes.post('/posting/:id/comment', controllers.commentController.create);
 
 /**
  * Likes
