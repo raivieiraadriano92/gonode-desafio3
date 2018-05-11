@@ -26,10 +26,10 @@ routes.put('/users', controllers.userController.update);
 routes.get('/feed', controllers.userController.feed);
 
 /**
- * Follows
+ * Friends
  */
-// routes.post('/follow/:id', controllers.followController.create);
-// routes.delete('/unfollow/:id', controllers.followController.destroy);
+routes.get('/friendship-invitations/:guestUserId/send', controllers.friendshipInvitationController.toInvite);
+routes.get('/friendship-invitations/:guestUserId/accept', controllers.friendshipInvitationController.acceptInvite);
 
 /**
  * posts
